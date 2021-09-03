@@ -1,0 +1,6 @@
+bazel-out
+bazel-bin
+bazel-sentry-repro
+bazel-testlogs
+
+target/

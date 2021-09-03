@@ -1,0 +1,9 @@
+load("@rules_rust//rust:rust.bzl", "rust_binary")
+
+rust_binary(
+    name = "sentry-repro",
+    srcs = ["main.rs"],
+    deps = [
+        "//cargo:sentry_contrib_native",
+    ],
+)

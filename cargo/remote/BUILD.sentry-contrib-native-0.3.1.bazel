@@ -1,0 +1,124 @@
+"""
+@generated
+cargo-raze crate build file.
+
+DO NOT EDIT! Replaced on runs of cargo-raze
+"""
+
+# buildifier: disable=load
+load("@bazel_skylib//lib:selects.bzl", "selects")
+
+# buildifier: disable=load
+load(
+    "@rules_rust//rust:defs.bzl",
+    "rust_binary",
+    "rust_library",
+    "rust_proc_macro",
+    "rust_test",
+)
+
+package(default_visibility = [
+    # Public for visibility by "@raze__crate__version//" targets.
+    #
+    # Prefer access through "//cargo", which limits external
+    # visibility to explicit Cargo.toml dependencies.
+    "//visibility:public",
+])
+
+licenses([
+    "notice",  # MIT from expression "MIT OR Apache-2.0"
+])
+
+# Generated Targets
+# buildifier: disable=out-of-order-load
+# buildifier: disable=load-on-top
+load(
+    "@rules_rust//cargo:cargo_build_script.bzl",
+    "cargo_build_script",
+)
+
+cargo_build_script(
+    name = "sentry_contrib_native_build_script",
+    srcs = glob(["**/*.rs"]),
+    build_script_env = {
+    },
+    crate_features = [
+        "default",
+        "transport-default",
+    ],
+    crate_root = "build.rs",
+    data = glob(["**"]),
+    edition = "2018",
+    rustc_flags = [
+        "--cap-lints=allow",
+    ],
+    tags = [
+        "cargo-raze",
+        "manual",
+    ],
+    version = "0.3.1",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@raze__sentry_contrib_native_sys__0_3_1//:sentry_contrib_native_sys",
+    ],
+)
+
+# Unsupported target "crash" with type "example" omitted
+
+# Unsupported target "crash_failure" with type "example" omitted
+
+# Unsupported target "custom-transport" with type "example" omitted
+
+# Unsupported target "example" with type "example" omitted
+
+# Unsupported target "panic" with type "example" omitted
+
+rust_library(
+    name = "sentry_contrib_native",
+    srcs = glob(["**/*.rs"]),
+    aliases = {
+        "@raze__sentry_contrib_native_sys__0_3_1//:sentry_contrib_native_sys": "sys",
+    },
+    crate_features = [
+        "default",
+        "transport-default",
+    ],
+    crate_root = "src/lib.rs",
+    data = [],
+    edition = "2018",
+    rustc_flags = [
+        "--cap-lints=allow",
+    ],
+    tags = [
+        "cargo-raze",
+        "manual",
+    ],
+    version = "0.3.1",
+    # buildifier: leave-alone
+    deps = [
+        ":sentry_contrib_native_build_script",
+        "@raze__once_cell__1_8_0//:once_cell",
+        "@raze__rmpv__0_4_7//:rmpv",
+        "@raze__sentry_contrib_native_sys__0_3_1//:sentry_contrib_native_sys",
+        "@raze__thiserror__1_0_28//:thiserror",
+        "@raze__vsprintf__2_0_0//:vsprintf",
+    ],
+)
+
+# Unsupported target "before_send" with type "test" omitted
+
+# Unsupported target "breadcrumb" with type "test" omitted
+
+# Unsupported target "crash" with type "test" omitted
+
+# Unsupported target "crash_failure" with type "test" omitted
+
+# Unsupported target "event" with type "test" omitted
+
+# Unsupported target "lib" with type "test" omitted
+
+# Unsupported target "lib_failure" with type "test" omitted
+
+# Unsupported target "options" with type "test" omitted
+
+# Unsupported target "panic" with type "test" omitted
